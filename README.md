@@ -329,10 +329,10 @@ Having a good guideline for creating commits and sticking to it makes working wi
 <a name="structure-and-naming"></a>
 ## 6. Structure and Naming
 ![Structure and Naming](/images/folder-tree.png)
-* Organize your files around product features / pages / components, not roles. Also, place your test files next to their implementation.
+* Tổ chức các tệp của bạn xung quanh chức năng/ trang/ thành phần, không bắt buộc. Ngoài ra, đặt các tệp kiểm tra của bạn bên cạnh nơi thực hiện của chúng.
 
 
-    **Bad**
+    **Xấu**
 
     ```
     .
@@ -344,7 +344,7 @@ Having a good guideline for creating commits and sticking to it makes working wi
     |   └── user.js
     ```
 
-    **Good**
+    **Tốt**
 
     ```
     .
@@ -358,31 +358,29 @@ Having a good guideline for creating commits and sticking to it makes working wi
     |   └── user.test.js
     ```
 
-    _Why:_
-    > Instead of a long list of files, you will create small modules that encapsulate one responsibility including its test and so on. It gets much easier to navigate through and things can be found at a glance.
+    _Tại sao:_
+    > Thay vì một danh sách dài các file, bạn sẽ tạo các module nhỏ nơi đóng gói nhiệm vụ bao gồm cả kiểm tra nó và đi tiếp. Nó dễ dàng điều hướng hơn và mọi thứ có thể kiếm trong nháy mắt.
 
-* Put your additional test files to a separate test folder to avoid confusion.
+* Đặt các tệp kiểm tra bổ sung vào các thư mục kiểm tra riêng biệt để tránh nhầm lẫn.
 
-    _Why:_
-    > It is a time saver for other developers or DevOps experts in your team.
+    _Tại sao:_
+    > Nó tiết kiệm thời gian cho các nhà phát triển khác hoặc chuyên gia DevOps trong đội của bạn.
 
-* Use a `./config` folder and don't make different config files for different environments.
+* Sử dụng một thư mục `./config` không tạo các tệp cấu hình khác nhau cho các môi trường khác nhau.
 
-    _Why:_
-    >When you break down a config file for different purposes (database, API and so on); putting them in a folder with a very recognizable name such as `config` makes sense. Just remember not to make different config files for different environments. It doesn't scale cleanly, as more deploys of the app are created, new environment names are necessary.
-    Values to be used in config files should be provided by environment variables. [read more...](https://medium.com/@fedorHK/no-config-b3f1171eecd5)
+    _Tại sao:_
+    >Khi bạn chia nhỏ tệp cáu hình cho các mục đích khác nhau(database, API và hơn thế nữa); đặt chúng vào một thư mục với  một cái tên dễ nhận thấy như `config` có ý nghĩa. Chỉ cần nhớ không tạo ra các tệp cấu hình khác nhau cho các mối trường khác nhau. Nó không mở rộng dễ, khi triển khai thêm ứng dụng đã được tạo ra, tên môi trường mới là cần thiết. Giá trị được sử dụng trong các file cấu hình nên được cung cấp bởi các biến môi trường.[đọc thêm...](https://medium.com/@fedorHK/no-config-b3f1171eecd5)    
+
+* Đặt các mã scripts của bạn vào thư mục `;/scripts`. Nó bao gồm cả `bash` và `node` scripts.
+
+    _Tại sao:_
+    >Rất có thể bạn kết thúc với nhiều hơn một mã script, xây dựng prodcution,xây dựng development, tạo dữ liệu, động bộ dữ liệu và hơn thế nữa.
     
 
-* Put your scripts in a `./scripts` folder. This includes `bash` and `node` scripts.
+* Đặt đầu ra quá trình xây dựng của bạn vào thư mục `./build`. Thêm `build` vào `.gitignore`.
 
-    _Why:_
-    >It's very likely you may end up with more than one script, production build, development build, database feeders, database synchronization and so on.
-    
-
-* Place your build output in a `./build` folder. Add `build/` to `.gitignore`.
-
-    _Why:_
-    >Name it what you like, `dist` is also cool. But make sure that keep it consistent with your team. What gets in there is most likely generated  (bundled, compiled, transpiled) or moved there. What you can generate, your teammates should be able to generate too, so there is no point committing them into your remote repository. Unless you specifically want to. 
+    _Tại sao:_
+    >Đặt tên những gì bạn thích, `dist` cũng giảm bớt.Nhưng đảm bảo rằng giữ nó phù hợp với nhóm của bạn. Những gì lấy được ở đó rất có thể được tạo ra (đóng gói, biên dịch, chuyển đổi) hoặc di chuyển chúng. Những gì bạn có thể tạo ra, thì đồng đội của bạn cũng nên có thể tạo ra như thế, vì vậy không đặt vị trí commit chúng vào trong remote repository của bạn. Trừ khi bạn muốn đặc biệt. 
 
 <a name="code-style"></a>
 ## 7. Code style
@@ -390,102 +388,102 @@ Having a good guideline for creating commits and sticking to it makes working wi
 ![Code style](/images/code-style.png)
 
 <a name="code-style-check"></a>
-### 7.1 Some code style guidelines
+### 7.1 Một số hướng dẫn về code style
 
-* Use stage-2 and higher JavaScript (modern) syntax for new projects. For old project stay consistent with existing syntax unless you intend to modernise the project.
+* Dùng stage-2 và cú pháp JS cao hơn cho dự án mới. Đối với dự án cũ vẫn phù hợp với cũ pháp đã tồn tại trừ khi bạn có ý định nâng cấp dự án.
 
-    _Why:_
-    > This is all up to you. We use transpilers to use advantages of new syntax. stage-2 is more likely to eventually become part of the spec with only minor revisions. 
+    _Tại sao:_
+    > Tất cả tùy thuộc vào bạn. Chúng tôi sử dụng transpilers để sử dụng lợi thế của cú pháp mới. Stare-2 thì nhiều khả năng để cuối cùng trở thành một phần đặc biệt với chỉ sửa đổi nhỏ..
 
-* Include code style check in your build process.
+* Bao gồm code style kiểm tra trong quá trình xây dựng của bạn.
 
-    _Why:_
-    > Breaking your build is one way of enforcing code style to your code. It prevents you from taking it less seriously. Do it for both client and server-side code. [read more...](https://www.robinwieruch.de/react-eslint-webpack-babel/)
+    _Tại sao:_
+    > Việc phá vỡ cấu trúc của bạn là một cách để thực thi style code vào code của bạn. Nó ngăn ngừa bạn từ việc nó ít nghiêm trọng đi. Làm nó cho cả code của client and server-side. [đọc thêm...](https://www.robinwieruch.de/react-eslint-webpack-babel/)
 
-* Use [ESLint - Pluggable JavaScript linter](http://eslint.org/) to enforce code style.
+* Sử dụng [ESLint - Pluggable JavaScript linter](http://eslint.org/) để thực hiện code style.
 
-    _Why:_
-    > We simply prefer `eslint`, you don't have to. It has more rules supported, the ability to configure the rules, and ability to add custom rules.
+    _Tại sao:_
+    > Chúng tôi chỉ đơn giản thích eslint, bạn có thể không phải. Nó hỗ trợ trợ nhiều quy tác, có khả năng để cấu hình những quy tắc đó, và có khả năng thêm các quy tắc tuỳ biến.
 
-* We use [Airbnb JavaScript Style Guide](https://github.com/airbnb/javascript) for JavaScript, [Read more](https://www.gitbook.com/book/duk/airbnb-javascript-guidelines/details). Use the javascript style guide required by the project or your team.
+* Chúng tôi dùng [Airbnb JavaScript Style Guide](https://github.com/airbnb/javascript) cho JS, [Đọc thêm](https://www.gitbook.com/book/duk/airbnb-javascript-guidelines/details). Sử dụng hướng dẫn javascript style được yêu cầu bởi dự án hoặc nhóm của bạn.
 
-* We use [Flow type style check rules for ESLint](https://github.com/gajus/eslint-plugin-flowtype) when using [FlowType](https://flow.org/).
+* Chúng tôi sử dụng [Flow type style check rules for ESLint](https://github.com/gajus/eslint-plugin-flowtype) Khi dùng [FlowType](https://flow.org/).
 
-    _Why:_
-    > Flow introduces few syntaxes that also need to follow certain code style and be checked.
+    _Tại sao:_
+    > Flow giới thiệu vài cú pháp rằng cũng cần phải làm theo code style và được kiểm tra.
 
-* Use `.eslintignore` to exclude files or folders from code style checks.
+* Sử dụng `.eslintignore` để loại trừ các file và các thư mục từ việc kiểm tra code style.
 
-    _Why:_
-    > You don't have to pollute your code with `eslint-disable` comments whenever you need to exclude a couple of files from style checking.
+    _Tại sao:_
+    > Bạn không phải làm xấu code của bạn với bình luận `eslint-disable` mỗi khi bạn cần loại trừ một cặp các file từ quá trình kiểm tra định dạng.
 
-* Remove any of your `eslint` disable comments before making a Pull Request.
+* Xoá bất kỳ bình luận đã vô hiệu hoá các bình luận `eslint` của bạn trước khi thực hiện Pull Request.
 
-    _Why:_
-    > It's normal to disable style check while working on a code block to focus more on the logic. Just remember to remove those `eslint-disable` comments and follow the rules.
+    _Tại sao:_
+    > Nó bình thuường để vô hiệu hoá style kiểm tra trong khi làm việc trên một khối code để tập trung nhiều hơn vào logic. Chỉ cần nhớ để xoá những bình luận `eslint-disable` và theo các quy tắc.
 
-* Depending on the size of the task use  `//TODO:` comments or open a ticket.
+* Tùy thuộc kích thước công việc sử dụng  `//TODO:` bình luận hoặc mở một thẻ.
 
-    _Why:_
-    > So then you can remind yourself and others about a small task (like refactoring a function or updating a comment). For larger tasks use `//TODO(#3456)` which is enforced by a lint rule and the number is an open ticket.
+    _Tại sao:_
+    > Vì vậy, sau đó bạn có thể nhắc nhở bản thân và những người khác về một công việc nhỏ (như tái cấu trúc lại một chức năng hoặc cập nhật nhận xét). Đối với các nhiệm vụ lớn hơn sử dụng //TODO(#3456)được thực thi bởi quy tắc lint và số là một thẻ mở..
 
 
-* Always comment and keep them relevant as code changes. Remove commented blocks of code.
+* Luôn luôn bình luận và giữ chúng thích hợp với các thay đổi của code. Xóa các khối bình luận của code.
     
-    _Why:_
-    > Your code should be as readable as possible, you should get rid of anything distracting. If you refactored a function, don't just comment out the old one, remove it.
+    _Tại sao:_
+    > Code của bạn nên càng có thể đọc được càng tốt, bạn nên loại bỏ mọi thứ làm mất tập trung. Nếu bạn sắp xếp lại một hàm, không chỉ comment lại code cũ, xoá bỏ nó..
 
-* Avoid irrelevant or funny comments, logs or naming.
+* Tránh bình luận, đặt tên không liên quan hoặc bình luận cho vui, .
 
-    _Why:_
-    > While your build process may(should) get rid of them, sometimes your source code may get handed over to another company/client and they may not share the same banter.
+    _Tại sao:_
+    > Trong khi quá trình xây dựng của bạn có thể (hoặc nên) loại bỏ chúng, đôi khi mã nguồn của bạn có thể được bàn giao cho công ty / khách hàng khác và họ không thể đưa ra lời chế nhạo.
 
 * Make your names search-able with meaningful distinctions avoid shortened names. For functions use long, descriptive names. A function name should be a verb or a verb phrase, and it needs to communicate its intention.
 
     _Why:_
     > It makes it more natural to read the source code.
 
-* Organize your functions in a file according to the step-down rule. Higher level functions should be on top and lower levels below.
+* Đặt tên của bạn có thể tìm kiếm được với sự phân biệt có ý nghĩa tránh tên ngắn. Với hàm sử dụng dài, mô tả tên. Một tên hàm nên là một động từ hoặc một cụm động từ, và nó cần truyền đạt ý nghĩa của mình.
 
-    _Why:_
-    > It makes it more natural to read the source code.
+    _Tại sao:_
+    > Nó làm cho việc đọc mã nguồn trở nên tự nhiên hơn.
 
 <a name="enforcing-code-style-standards"></a>
-### 7.2 Enforcing code style standards
+### 7.2 Thực thi các style code chuẩn
 
-* Use a [.editorconfig](http://editorconfig.org/) file which helps developers define and maintain consistent coding styles between different editors and IDEs on the project.
+* Sự dụng một tệp [.editorconfig](http://editorconfig.org/) giúp nhà phát triển xác định và duy trì codung style giữa các editor và IDE trong dự án .
 
-    _Why:_
-    > The EditorConfig project consists of a file format for defining coding styles and a collection of text editor plugins that enable editors to read the file format and adhere to defined styles. EditorConfig files are easily readable and they work nicely with version control systems.
+    _Tại sao:_
+    > Dự án EditorConfig bao gồm một tệp định dạng cho xác định các codeing style và một tập hợp các plugin của editor để cho phép các editor để đọc file định dạng tuân theo các style được xác định. Các file EditorConfig dễ dàng có thê đọc được và chúng làm việc thú vị với các phiên bản của hệ thống kiểm soát.
 
-* Have your editor notify you about code style errors. Use [eslint-plugin-prettier](https://github.com/prettier/eslint-plugin-prettier) and [eslint-config-prettier](https://github.com/prettier/eslint-config-prettier) with your existing ESLint configuration. [read more...](https://github.com/prettier/eslint-config-prettier#installation)
+* Yêu cầu trình biên tập thông báo cho bạn về các lỗi về kiểu mã. Sử dụng [eslint-plugin-prettier](https://github.com/prettier/eslint-plugin-prettier) và [eslint-config-prettier](https://github.com/prettier/eslint-config-prettier) với cấu hình ESLint hiện tại của bạn. [Đọc thêm...](https://github.com/prettier/eslint-config-prettier#installation)
 
-* Consider using Git hooks.
-
-    _Why:_
-    > Git hooks greatly increase a developer's productivity. Make changes, commit and push to staging or production environments without the fear of breaking builds. [read more...](http://githooks.com/)
-
-* Use Prettier with a precommit hook.
+* Xem xét sử dụng Git hooks.
 
     _Why:_
-    > While `prettier` itself can be very powerful, it's not very productive to run it simply as an npm task alone each time to format code. This is where `lint-staged` (and `husky`) come into play. Read more on configuring `lint-staged` [here](https://github.com/okonet/lint-staged#configuration) and on configuring `husky` [here](https://github.com/typicode/husky).
+    > Git hooks tăng đáng kể năng suất của các nhà phát triển sản phẩm. Các thay đổi được thực hiện, commit và push để môi trường staging hoặc production mà không phá vớ cấu trúc đã xây dựng. [đọc thêm...](http://githooks.com/)
+
+* Dùng Prettier với hook trước khi commit.
+
+    _Tại sao:_
+    > Trong khi `prettier` bản thân nó có thể rất mạnh mẽ, nó không phải rất hiệu quả để chạy đơn giản giống như một nhiệm vụ đơn lẻ của npm mỗi khi định dạng code. Đây là `lint-staged` (và `husky`) để vào chạy. Đọc thêm nhiều cấu hình `lint-staged` đây và trên cấu hình `husky` [đây](https://github.com/okonet/lint-staged#configuration) và trên cấu hình `husky` [đây](https://github.com/typicode/husky).
 
 
 <a name="logging"></a>
-## 8. Logging
+## 8. Đăng nhập
 
 ![Logging](/images/logging.png)
 
-* Avoid client-side console logs in production
+* Tránh client-side console logs trong production
 
     _Why:_
-    > Even though your build process can (should) get rid of them, make sure that your code style checker warns you about leftover console logs.
+    > Mạc dù quá trinhd xây dựng của bạn có thể(nên) loại bỏ chúng, hãy chắc chắn kiểm tra code style của bạn cảnh báo bạn về console logs còn sót lại.
 
-* Produce readable production logging. Ideally use logging libraries to be used in production mode (such as [winston](https://github.com/winstonjs/winston) or
+*  Sử dụng thư viện log để sử dụng trong chế độ sản xuất(chẳng hạn như [winston](https://github.com/winstonjs/winston) hoặc
 [node-bunyan](https://github.com/trentm/node-bunyan)).
 
-    _Why:_
-    > It makes your troubleshooting less unpleasant with colorization, timestamps, log to a file in addition to the console or even logging to a file that rotates daily. [read more...](https://blog.risingstack.com/node-js-logging-tutorial/)
+    _Tại sao:_
+    > Nó làm cho xử lý sự cố của bạn ít khó chịu với colorization, timestamps, đăng nhập vào một tập tin thêm vào giao diện điều khiển hoặc thậm chí đăng nhập vào một tập tin mà xoay hàng ngày. [đọc thêm...](https://blog.risingstack.com/node-js-logging-tutorial/)
 
 
 <a name="api"></a>
